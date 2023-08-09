@@ -15,7 +15,7 @@ export class TrackingServer {
   ): Promise<boolean> {
     console.log('[nblineage] tracking the notebook server environment');
 
-    const memeobj = notebook.metadata.get('lc_notebook_meme');
+    const memeobj = notebook.getMetadata('lc_notebook_meme');
     const meme: INotebookMEME = isNotebookMEME(memeobj)
       ? (memeobj as INotebookMEME)
       : {};
@@ -39,7 +39,7 @@ export class TrackingServer {
         trackingMetadata.history.push(trackingMetadata.current);
       }
       trackingMetadata.current = serverSignature;
-      notebook.metadata.set(
+      notebook.setMetadata(
         'lc_notebook_meme',
         meme as ReadonlyPartialJSONObject
       );
