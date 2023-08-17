@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
-from notebook.base.handlers import IPythonHandler
-from notebook.utils import url_path_join
+# from notebook.base.handlers import IPythonHandler
+from jupyter_server.utils import url_path_join
 from .tracking_server import TrackingServer
 from . import handler
 
@@ -31,7 +31,7 @@ def _jupyter_server_extension_paths():
         module= "nblineage"
     )]
 
-def load_jupyter_server_extension(nb_app):
+def _load_jupyter_server_extension(nb_app):
     nb_app.log.info('Loaded server extension nblineage')
 
     tracking_server = TrackingServer()
